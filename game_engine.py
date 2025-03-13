@@ -96,8 +96,8 @@ class SimulationGrid(GridLayout):
 
         self.image_sources = {
             EMPTY: "assets/empty.png",
-            VERTICAL_REFLECT: "assets/vertical_reflector.png",
-            HORIZONTAL_REFLECT: "assets/horizontal_reflector.png",
+            VERTICAL_REFLECT: "assets/horizontal_reflector.png",
+            HORIZONTAL_REFLECT: "assets/vertical_reflector.png",
             ROBOT: "assets/robot.png",
             CLOCKWISE_ROTATOR: "assets/rotator.png",
             BELL: "assets/bell.png",
