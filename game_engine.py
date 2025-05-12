@@ -20,6 +20,7 @@ from kivy.uix.slider import Slider
 from kivy.uix.label import Label
 
 import audio
+from kivy.uix.textinput import TextInput
 from kivy.uix.togglebutton import ToggleButton
 from kivy.uix.widget import Widget
 
@@ -538,7 +539,6 @@ class SimulationGrid(GridLayout):
         self.refresh_cells()
 
 
-
 class CellularAutomataApp(App):
     def __init__(self, **kwargs):
         self.grids = []
@@ -550,15 +550,33 @@ class CellularAutomataApp(App):
 
     def toggle_recording(self, instance):
         if not self.recorder.recording:
-            # Start recording
             self.recorder.start_recording()
             self.recorder.grids = self.grids
-            self.recorder.save_json('test.json')
+            self.prompt_filename()
             instance.text = "Stop"
         else:
-            # Stop recording
             self.recorder.stop_recording()
             instance.text = "Record"
+
+    def prompt_filename(self):
+        layout = BoxLayout(orientation='vertical', spacing=10, padding=10)
+        filename_input = TextInput(text='session.json', multiline=False)
+        save_button = Button(text='Save')
+
+        def do_save(_):
+            name = filename_input.text.strip()
+            if not name.endswith('.json'):
+                name += '.json'
+            self.recorder.save_json(name)
+            popup.dismiss()
+
+        layout.add_widget(Label(text='Enter filename:'))
+        layout.add_widget(filename_input)
+        layout.add_widget(save_button)
+        save_button.bind(on_press=do_save)
+
+        popup = Popup(title='Save Recording', content=layout, size_hint=(0.5, 0.3))
+        popup.open()
 
     def build_top_controls(self):
         layout = BoxLayout(size_hint_y=None, height=50)
