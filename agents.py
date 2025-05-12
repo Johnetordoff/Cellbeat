@@ -5,27 +5,21 @@ import numpy as np
 EMPTY, VERTICAL_REFLECT, HORIZONTAL_REFLECT = 0, 1, 2
 ROBOT, CLOCKWISE_ROTATOR, COUNTERCLOCKWISE_ROTATOR = 3, 4, 6
 BELL_0 = 10
-NOISE_AGENT = 11  # New agent type for noise!
+DJ = 20
+DOWNSTAIRS = 30
+UPSTAIRS = 31
 
-# Movement directions
 DIRECTIONS = {
     "UP": (-1, 0), "DOWN": (1, 0), "LEFT": (0, -1), "RIGHT": (0, 1)
 }
 
 STATIC_AGENTS = {
+    EMPTY,
     VERTICAL_REFLECT, HORIZONTAL_REFLECT,
     CLOCKWISE_ROTATOR, COUNTERCLOCKWISE_ROTATOR,
     BELL_0,
-    NOISE_AGENT  # Include the noise agent in static agents
+    DOWNSTAIRS, UPSTAIRS
 }
-
-BELL_FREQUENCIES = [
-    261.63, 277.18, 293.66, 311.13, 329.63, 349.23, 369.99, 392.00, 415.30, 440.00,
-    466.16, 493.88, 523.25, 554.37, 587.33, 622.25, 659.25, 698.46, 739.99, 783.99,
-    830.61, 880.00, 932.33, 987.77, 1046.50, 1108.73, 1174.66, 1244.51, 1318.51, 1396.91
-]
-
-DEFAULT_NOISE_DURATION = .25  # Customize as needed!
 
 
 class BaseAgent:
@@ -33,12 +27,12 @@ class BaseAgent:
         raise NotImplementedError
 
 
-class RobotAgent(BaseAgent):
-    # existing init and other methods remain
-    def __init__(self):
+class MovingAgent(BaseAgent):
+    def __init__(self, agent_type):
+        self.agent_type = agent_type
         self.directions = {}
-        self.speeds = {}  # Track speed per robot cell
-        self.counters = {}  # Internal counters to control movement
+        self.speeds = {}
+        self.counters = {}
 
     def apply_rules(self, static_grid, dynamic_grid, cell_attributes):
         rows, cols = static_grid.shape
@@ -57,7 +51,8 @@ class RobotAgent(BaseAgent):
                 continue
 
             new_counters[(r, c)] = 0
-            dir = self.directions.get((r, c), DIRECTIONS["RIGHT"])
+
+            dir = self.directions.get((r, c), 'RIGHT')  # Default to RIGHT
             nr, nc = (r + dir[0]) % rows, (c + dir[1]) % cols
             cell = static_grid[nr, nc]
 
@@ -86,12 +81,22 @@ class RobotAgent(BaseAgent):
 
     def play_tone(self, r, c, cell_attributes):
         attr = cell_attributes.get((r, c), {'pitch': 440.0, 'duration': 0.5, 'velocity': 100})
-        freq, duration, velocity = attr['pitch'], attr['duration'], attr.get('velocity', 100)
-        audio.play_tone(freq, duration, velocity, [1.0])
+        audio.play_tone(attr['pitch'], attr['duration'], attr.get('velocity', 100), [1.0])
+
+
+class RobotAgent(MovingAgent):
+    def __init__(self):
+        super().__init__(ROBOT)
+
+
+class DJAgent(MovingAgent):
+    def __init__(self):
+        super().__init__(DJ)
 
 
 class StaticAgent(BaseAgent):
     def apply_rules(self, static_grid, dynamic_grid):
         return static_grid
 
-AGENTS = [RobotAgent(), StaticAgent()]
+
+AGENTS = [RobotAgent(), DJAgent(), StaticAgent()]

@@ -1,72 +1,66 @@
 [
   {
-    "id": "c6e100ac-792f-445a-9299-3e59ae4f4cbb",
-    "pitch": 555.6813648024868,
-    "duration": 0.3750061864402747,
-    "velocity": 100,
-    "icon": "assets/images/tone_0.png"
-  },
-  {
-    "id": "21729cc1-d06a-4be1-bf95-89d6f88cc403",
-    "pitch": 440.0,
+    "id": "note1",
+    "pitch": 261.63,
     "duration": 0.5,
-    "velocity": 100,
-    "icon": "assets/images/tone_0.png"
+    "velocity": 110,
+    "icon_unicode": "C4",
+    "icon": "C4"
   },
   {
-    "id": "f4a9fa10-b961-4c12-9ceb-9f5e75523e2a",
-    "pitch": 1489.9719380988781,
-    "duration": 0.18344151672480336,
-    "velocity": 100,
-    "icon": "assets/images/tone_0.png"
+    "id": "note2",
+    "pitch": 293.66,
+    "duration": 0.5,
+    "velocity": 110,
+    "icon_unicode": "D4",
+    "icon": "D4"
   },
   {
-    "id": "0b2a8233-d59c-47e1-8ca4-bd7f42d8d584",
-    "pitch": 1652.4572551939018,
-    "duration": 0.5304265788509402,
-    "velocity": 100,
-    "icon": "assets/images/tone_0.png"
+    "id": "note3",
+    "pitch": 329.63,
+    "duration": 0.5,
+    "velocity": 110,
+    "icon_unicode": "E4",
+    "icon": "E4"
   },
   {
-    "id": "01c6c1ce-8735-4b0d-8a76-1f635e2c5b32",
-    "pitch": 636.9240233499975,
-    "duration": 0.18344151672480336,
-    "velocity": 100,
-    "icon": "assets/images/tone_0.png"
+    "id": "note4",
+    "pitch": 349.23,
+    "duration": 0.5,
+    "velocity": 110,
+    "icon_unicode": "F4",
+    "icon": "F4"
   },
   {
-    "id": "69586c30-c8ed-4fea-b793-b4664ff8d76d",
-    "pitch": 1002.5159868138048,
-    "duration": 1.1737947148764853,
-    "velocity": 100,
-    "icon": "assets/images/tone_0.png"
+    "id": "note5",
+    "pitch": 392.00,
+    "duration": 0.5,
+    "velocity": 110,
+    "icon_unicode": "G4",
+    "icon": "G4"
   },
   {
-    "id": "697cf2b0-f11e-4e83-b315-310aaf26002f",
-    "pitch": 1936.8065601101985,
-    "duration": 1.7918618567886666,
-    "velocity": 100,
-    "icon": "assets/images/tone_0.png"
+    "id": "note6",
+    "pitch": 440.00,
+    "duration": 0.5,
+    "velocity": 110,
+    "icon_unicode": "A4",
+    "icon": "A4"
   },
   {
-    "id": "900e7579-8045-49fb-871c-58299191e7e8",
-    "pitch": 1408.7292795513652,
-    "duration": 0.7292201040273727,
-    "velocity": 100,
-    "icon": "assets/images/tone_0.png"
+    "id": "note7",
+    "pitch": 493.88,
+    "duration": 0.5,
+    "velocity": 110,
+    "icon_unicode": "B4",
+    "icon": "B4"
   },
   {
-    "id": "c854494f-84b2-4775-8f55-f1878beceb90",
-    "pitch": 474.4387062549715,
-    "duration": 1.636441464378001,
-    "velocity": 127,
-    "icon": "assets/images/tone_0.png"
-  },
-  {
-    "id": "c38c0e7a-da17-4bf0-8f4c-34dc51e8d9bc",
-    "pitch": 1896.1852308364407,
-    "duration": 0.6569315494177608,
-    "velocity": 127,
-    "icon": "assets/images/tone_0.png"
+    "id": "note8",
+    "pitch": 523.25,
+    "duration": 0.5,
+    "velocity": 110,
+    "icon_unicode": "C5",
+    "icon": "C5"
   }
 ]
