@@ -1,5 +1,6 @@
 import json
 import numpy as np
+import agents
 import audio  # C extension for audio playback/recording
 
 class Recorder:
@@ -25,18 +26,34 @@ class Recorder:
 
     def save_json(self, filename):
         all_grids_state = []
-        print("?", self.grids)
         for grid in self.grids:
             grid_state = {
                 "emoji_label": grid.emoji_label,
+                "bpm": grid.bpm,
                 "static_grid": grid.static_grid.tolist(),
                 "dynamic_grid": grid.dynamic_grid.tolist(),
-                "directions": {f"{k[0]}_{k[1]}": v for k, v in grid.robot_agent.directions.items()},
-                "speeds": {f"{k[0]}_{k[1]}": v for k, v in grid.robot_agent.speeds.items()},
-                "counters": {f"{k[0]}_{k[1]}": v for k, v in grid.robot_agent.counters.items()},
+                "directions": {
+                    f"{k[0]}_{k[1]}": list(v)  # Save direction as list to preserve tuple
+                    for k, v in grid.robot_agent.directions.items()
+                },
+                "speeds": {
+                    f"{k[0]}_{k[1]}": v
+                    for k, v in grid.robot_agent.speeds.items()
+                },
+                "counters": {
+                    f"{k[0]}_{k[1]}": v
+                    for k, v in grid.robot_agent.counters.items()
+                },
                 "cell_attributes": {
-                    f"{k[0]}_{k[1]}": v for k, v in grid.cell_attributes.items()
-                    if isinstance(k, tuple) and len(k) == 2
+                    f"{r}_{c}": {
+                        "agent_type": grid.cell_attributes.get((r, c), {}).get("agent_type",
+                                                                               int(grid.static_grid[r, c])),
+                        "pitch": grid.cell_attributes.get((r, c), {}).get("pitch", 440.0),
+                        "duration": grid.cell_attributes.get((r, c), {}).get("duration", 0.5),
+                        "velocity": grid.cell_attributes.get((r, c), {}).get("velocity", 100)
+                    }
+                    for r in range(grid.static_grid.shape[0])
+                    for c in range(grid.static_grid.shape[1])
                 }
             }
             all_grids_state.append(grid_state)
@@ -66,10 +83,23 @@ class Recorder:
             grid.static_grid = np.array(grid_data["static_grid"])
             grid.dynamic_grid = np.array(grid_data["dynamic_grid"])
 
-            grid.robot_agent.directions = {tuple(map(int, k.split('_'))): v for k, v in grid_data["directions"].items()}
+            grid.robot_agent.directions = {
+                tuple(map(int, k.split('_'))): agents.DIRECTIONS[v] if isinstance(v, str) else v
+                for k, v in grid_data["directions"].items()
+            }
+
             grid.robot_agent.speeds = {tuple(map(int, k.split('_'))): v for k, v in grid_data["speeds"].items()}
             grid.robot_agent.counters = {tuple(map(int, k.split('_'))): v for k, v in grid_data["counters"].items()}
-            grid.cell_attributes = {tuple(map(int, k.split('_'))): v for k, v in grid_data["cell_attributes"].items()}
+
+            grid.cell_attributes = {}
+            for k_str, v in grid_data["cell_attributes"].items():
+                r, c = map(int, k_str.split('_'))
+                grid.cell_attributes[(r, c)] = {
+                    "agent_type": v.get("agent_type", agents.EMPTY),
+                    "pitch": float(v.get("pitch", 440.0)),
+                    "duration": float(v.get("duration", 0.5)),
+                    "velocity": int(v.get("velocity", 100))
+                }
 
             grid.refresh_cells()
 

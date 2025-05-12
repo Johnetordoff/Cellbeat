@@ -2,7 +2,6 @@
   "grids": [
     {
       "emoji_label": "\ud83d\ude00",
-      "bpm": 120,
       "static_grid": [
         [
           0,
@@ -624,12 +623,12 @@
         ],
         [
           0,
+          0,
+          0,
+          0,
+          0,
+          0,
           3,
-          0,
-          0,
-          0,
-          0,
-          0,
           0,
           0,
           0,
@@ -647,17 +646,17 @@
         [
           0,
           0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           3,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
           0,
           0,
           0,
@@ -888,23 +887,24 @@
         ]
       ],
       "directions": {
-        "8_1": [
+        "8_6": [
           0,
           1
         ],
-        "9_2": [
+        "9_12": [
           0,
           1
         ]
       },
       "speeds": {
-        "8_1": 1,
-        "9_2": 4
+        "8_6": 1,
+        "9_12": 1
       },
       "counters": {
-        "8_0": 0,
-        "8_1": 0,
-        "9_2": 2
+        "8_5": 0,
+        "8_6": 0,
+        "9_11": 0,
+        "9_12": 0
       },
       "cell_attributes": {
         "0_0": {
@@ -1869,19 +1869,19 @@
         },
         "8_0": {
           "agent_type": 10,
-          "pitch": 523.25,
+          "pitch": 392.0,
           "duration": 0.5,
           "velocity": 100
         },
         "8_1": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "8_2": {
           "agent_type": 10,
-          "pitch": 329.63,
+          "pitch": 392.0,
           "duration": 0.5,
           "velocity": 100
         },
@@ -1898,8 +1898,8 @@
           "velocity": 100
         },
         "8_5": {
-          "agent_type": 10,
-          "pitch": 293.66,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
@@ -1910,8 +1910,8 @@
           "velocity": 100
         },
         "8_7": {
-          "agent_type": 10,
-          "pitch": 329.63,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
@@ -1923,7 +1923,7 @@
         },
         "8_9": {
           "agent_type": 10,
-          "pitch": 349.23,
+          "pitch": 392.0,
           "duration": 0.5,
           "velocity": 100
         },
@@ -1940,8 +1940,8 @@
           "velocity": 100
         },
         "8_12": {
-          "agent_type": 10,
-          "pitch": 329.63,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
@@ -1971,19 +1971,19 @@
         },
         "8_17": {
           "agent_type": 10,
-          "pitch": 440.0,
+          "pitch": 392.0,
           "duration": 0.5,
           "velocity": 100
         },
         "8_18": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "8_19": {
           "agent_type": 10,
-          "pitch": 523.25,
+          "pitch": 392.0,
           "duration": 0.5,
           "velocity": 100
         },
@@ -1995,18 +1995,18 @@
         },
         "9_1": {
           "agent_type": 10,
-          "pitch": 261.63,
+          "pitch": 392.0,
           "duration": 0.5,
           "velocity": 100
         },
         "9_2": {
           "agent_type": 10,
-          "pitch": 329.63,
+          "pitch": 293.66,
           "duration": 0.5,
           "velocity": 100
         },
         "9_3": {
-          "agent_type": 3,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
@@ -2018,32 +2018,32 @@
           "velocity": 100
         },
         "9_5": {
-          "agent_type": 10,
-          "pitch": 329.63,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
         "9_6": {
           "agent_type": 10,
-          "pitch": 261.63,
+          "pitch": 293.66,
           "duration": 0.5,
           "velocity": 100
         },
         "9_7": {
           "agent_type": 10,
-          "pitch": 329.63,
+          "pitch": 293.66,
           "duration": 0.5,
           "velocity": 100
         },
         "9_8": {
           "agent_type": 10,
-          "pitch": 261.63,
+          "pitch": 293.66,
           "duration": 0.5,
           "velocity": 100
         },
         "9_9": {
-          "agent_type": 10,
-          "pitch": 329.63,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
@@ -2054,20 +2054,20 @@
           "velocity": 100
         },
         "9_11": {
-          "agent_type": 10,
-          "pitch": 261.63,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
         "9_12": {
           "agent_type": 10,
-          "pitch": 329.63,
+          "pitch": 392.0,
           "duration": 0.5,
           "velocity": 100
         },
         "9_13": {
-          "agent_type": 10,
-          "pitch": 329.63,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
@@ -2079,7 +2079,7 @@
         },
         "9_15": {
           "agent_type": 10,
-          "pitch": 329.63,
+          "pitch": 392.0,
           "duration": 0.5,
           "velocity": 100
         },
@@ -2091,7 +2091,7 @@
         },
         "9_17": {
           "agent_type": 10,
-          "pitch": 329.63,
+          "pitch": 392.0,
           "duration": 0.5,
           "velocity": 100
         },
@@ -3311,7 +3311,6 @@
     },
     {
       "emoji_label": "\ud83d\ude00",
-      "bpm": 120,
       "static_grid": [
         [
           0,
@@ -5774,8 +5773,8 @@
         },
         "13_2": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "13_3": {

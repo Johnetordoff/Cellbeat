@@ -52,7 +52,7 @@ class MovingAgent(BaseAgent):
 
             new_counters[(r, c)] = 0
 
-            dir = self.directions.get((r, c), 'RIGHT')  # Default to RIGHT
+            dir = self.directions.get((r, c), DIRECTIONS["RIGHT"])  # <-- Fix here
             nr, nc = (r + dir[0]) % rows, (c + dir[1]) % cols
             cell = static_grid[nr, nc]
 

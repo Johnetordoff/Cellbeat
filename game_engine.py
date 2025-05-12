@@ -487,7 +487,7 @@ class SimulationGrid(GridLayout):
                 cell = self.cell_widgets[r][c]
                 cell.image.source = self.image_sources.get(val, self.image_sources[agents.EMPTY])
                 attr = self.cell_attributes[(r, c)]
-                if attr['agent_type'] == 10:
+                if val:
                     cell.update_dot(attr['pitch'], attr['duration'])
 
     def update_grid(self, dt=None):
@@ -652,33 +652,50 @@ class CellularAutomataApp(App):
         self.grid_toggles.clear()
 
         for grid_data in grids_data:
-            emoji_label = grid_data.get('emoji', '😀')
+            emoji_label = grid_data.get('emoji_label', '😀')
+            bpm = grid_data.get('bpm', 120)
+
             new_grid = SimulationGrid(emoji_label=emoji_label)
             new_grid.app = self
+            new_grid.bpm = bpm
             self.grids.append(new_grid)
 
-            # Load grid data
             new_grid.static_grid = np.array(grid_data['static_grid'])
             new_grid.dynamic_grid = np.array(grid_data['dynamic_grid'])
 
-            loaded_attrs = {
-                tuple(map(int, k.split(','))): v
-                for k, v in grid_data['cell_attributes'].items()
+            # Load robot state
+            new_grid.robot_agent.directions = {
+                tuple(map(int, k.split('_'))): tuple(v)
+                for k, v in grid_data.get("directions", {}).items()
+            }
+            new_grid.robot_agent.speeds = {
+                tuple(map(int, k.split('_'))): v
+                for k, v in grid_data.get("speeds", {}).items()
+            }
+            new_grid.robot_agent.counters = {
+                tuple(map(int, k.split('_'))): v
+                for k, v in grid_data.get("counters", {}).items()
             }
 
-            # First initialize attributes for all cells
-            for r in range(new_grid.rows):
-                for c in range(new_grid.cols):
+            # Load cell attributes
+            loaded_attrs = {
+                tuple(map(int, k.split('_'))): v
+                for k, v in grid_data.get('cell_attributes', {}).items()
+            }
+
+            for r in range(new_grid.static_grid.shape[0]):
+                for c in range(new_grid.static_grid.shape[1]):
                     new_grid.cell_attributes[(r, c)] = {
-                        'agent_type': agents.EMPTY,
+                        'agent_type': int(new_grid.static_grid[r, c]),
                         'pitch': 440.0,
-                        'duration': 0.5
+                        'duration': 0.5,
+                        'velocity': 100,
                     }
 
-            # Update initialized attributes with loaded values
-            for key, val in loaded_attrs.items():
-                new_grid.cell_attributes[key] = val
+            for (r, c), attrs in loaded_attrs.items():
+                new_grid.cell_attributes[(r, c)].update(attrs)
 
+            # UI toggle
             idx = len(self.grids) - 1
             toggle = ToggleButton(
                 text=new_grid.emoji_label,
@@ -691,15 +708,13 @@ class CellularAutomataApp(App):
             self.toggle_container.add_widget(toggle)
             self.grid_toggles.append(toggle)
 
-        # Ensure first grid is shown and refreshed properly after adding to UI
-        Clock.schedule_once(lambda dt: self.switch_to_grid(0), 0)
-        Clock.schedule_once(lambda dt: self.grids[0].refresh_cells(), 0.1)
-
         def finish_grid_initialization(dt):
             self.switch_to_grid(0)
             self.grids[0].refresh_cells()
             self.grid_toggles[0].state = 'down'
 
+        Clock.schedule_once(lambda dt: self.switch_to_grid(0), 0)
+        Clock.schedule_once(lambda dt: self.grids[0].refresh_cells(), 0.1)
         Clock.schedule_once(finish_grid_initialization, 0)
 
     def build_grid_toolbar(self):
