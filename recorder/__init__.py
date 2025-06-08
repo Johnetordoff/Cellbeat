@@ -29,7 +29,7 @@ class Recorder:
         for grid in self.grids:
             grid_state = {
                 "emoji_label": grid.emoji_label,
-                "bpm": grid.bpm,
+                "bpm": getattr(grid, "bpm", 121),
                 "static_grid": grid.static_grid.tolist(),
                 "dynamic_grid": grid.dynamic_grid.tolist(),
                 "directions": {

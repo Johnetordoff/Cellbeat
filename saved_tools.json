@@ -33,7 +33,7 @@
   },
   {
     "id": "note5",
-    "pitch": 392.00,
+    "pitch": 392.0,
     "duration": 0.5,
     "velocity": 110,
     "icon_unicode": "G4",
@@ -41,7 +41,7 @@
   },
   {
     "id": "note6",
-    "pitch": 440.00,
+    "pitch": 440.0,
     "duration": 0.5,
     "velocity": 110,
     "icon_unicode": "A4",
@@ -62,5 +62,45 @@
     "velocity": 110,
     "icon_unicode": "C5",
     "icon": "C5"
+  },
+  {
+    "id": "6e1ea004-a50b-47a0-ba7b-a319e8841a8e",
+    "pitch": 1070.875229577486,
+    "duration": 1.5533096265769475,
+    "velocity": 127,
+    "icon_unicode": "\u221a",
+    "icon": "\u221a"
+  },
+  {
+    "id": "6bc680a9-424c-4795-a5f3-902e6a0232a9",
+    "pitch": 607.7013787074092,
+    "duration": 1.8280061340934723,
+    "velocity": 106,
+    "icon_unicode": "\u00e5",
+    "icon": "\u00e5"
+  },
+  {
+    "id": "5d4bffc1-8053-4551-ad8f-919b64247662",
+    "pitch": 376.11445327237203,
+    "duration": 1.3039141131737866,
+    "velocity": 127,
+    "icon_unicode": "\u222b",
+    "icon": "\u222b"
+  },
+  {
+    "id": "c04248ff-63c2-40e1-9021-54f0a6224164",
+    "pitch": 839.2883041424489,
+    "duration": 1.9761976710431766,
+    "velocity": 39,
+    "icon_unicode": "Choose Icon",
+    "icon": "Choose Icon"
+  },
+  {
+    "id": "ed9023bd-f1ca-49f1-a7ee-cfd1eb9ca7b1",
+    "pitch": 329.79706818536255,
+    "duration": 0.5774141393471879,
+    "velocity": 32,
+    "icon_unicode": "Choose Icon",
+    "icon": "Choose Icon"
   }
 ]

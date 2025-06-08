@@ -1,5 +1,7 @@
 import os
 import json
+import random
+
 import numpy as np
 from uuid import uuid4
 
@@ -30,6 +32,14 @@ from recorder import Recorder
 SAVED_TOOLS_PATH = 'saved_tools.json'
 ALL_STATIC_AGENTS = agents.STATIC_AGENTS.union(agents.STATIC_AGENTS)
 
+
+GRID_ICONS = [
+    'Ω',
+    '≈',
+    'ç',
+    '≠',
+    '‡'
+]
 
 class ToolButton(ButtonBehavior, BoxLayout):
     def __init__(self, tool_data, select_callback, **kwargs):
@@ -272,6 +282,8 @@ class Cell(ButtonBehavior, BoxLayout):
             self.image.opacity = 1.0
 
     def update_image(self, agent_type):
+        if agent_type not in self.grid.image_sources:
+            print(f"Missing image for agent type: {agent_type}")
         self.image.source = self.grid.image_sources.get(
             agent_type, self.grid.image_sources[agents.EMPTY]
         )
@@ -446,8 +458,9 @@ class Cell(ButtonBehavior, BoxLayout):
 
 
 class SimulationGrid(GridLayout):
-    def __init__(self, rows=20, cols=20, emoji_label=None, **kwargs):
-        self.emoji_label = emoji_label or "😀"  # set before super().__init__
+    def __init__(self, rows=20, cols=20, emoji_label=None, bpm=120, **kwargs):
+        self.emoji_label = emoji_label or 'å'  # set before super().__init__
+        self.bpm = bpm  # ✅ Set BPM here
         super().__init__(rows=rows, cols=cols, **kwargs)
         self.rows = rows
         self.cols = cols
@@ -468,7 +481,11 @@ class SimulationGrid(GridLayout):
         self.image_sources = {10: f"assets/images/tone_0.png"}
         self.image_sources.update({
             agents.ROBOT: "assets/robot.png",
-            agents.EMPTY: "assets/empty.png"
+            agents.EMPTY: "assets/empty.png",
+            agents.VERTICAL_REFLECT: "assets/horizontal_reflector.png",
+            agents.HORIZONTAL_REFLECT: "assets/vertical_reflector.png",
+            agents.CLOCKWISE_ROTATOR: "assets/rotator.png",
+            agents.COUNTERCLOCKWISE_ROTATOR: "assets/counter_rotator.png",
         })
 
         self.cell_widgets = []
@@ -548,6 +565,29 @@ class CellularAutomataApp(App):
         # Index of the currently active grid in the list
         self.current_index = 0
 
+    def save_current_grid(self, instance=None):
+        layout = BoxLayout(orientation='vertical', spacing=10, padding=10)
+        filename_input = TextInput(text='grid.json', multiline=False)
+        save_button = Button(text='Save')
+
+        def do_save(_):
+            name = filename_input.text.strip()
+            if not name.endswith('.json'):
+                name += '.json'
+            # Save only the current grid
+            grid = self.grids[self.current_index]
+            with open(name, 'w') as f:
+                json.dump(grid.get_state(), f, indent=2)
+            popup.dismiss()
+
+        layout.add_widget(Label(text='Enter filename:'))
+        layout.add_widget(filename_input)
+        layout.add_widget(save_button)
+        save_button.bind(on_press=do_save)
+
+        popup = Popup(title='Save Grid', content=layout, size_hint=(0.5, 0.3))
+        popup.open()
+
     def toggle_recording(self, instance):
         if not self.recorder.recording:
             self.recorder.start_recording()
@@ -580,26 +620,22 @@ class CellularAutomataApp(App):
 
     def build_top_controls(self):
         layout = BoxLayout(size_hint_y=None, height=50)
-
         layout.add_widget(
             Button(text="Start", on_press=lambda _: setattr(self.grids[self.current_index], 'running', True)))
         layout.add_widget(
             Button(text="Stop", on_press=lambda _: setattr(self.grids[self.current_index], 'running', False)))
         layout.add_widget(Button(text="Reset", on_press=self.grid_reset))
+
+        # NEW: Save Grid Button
+        layout.add_widget(Button(text="Save Grid", on_press=self.save_current_grid))
+
+        # Record button (audio)
         layout.add_widget(Button(text="Record", on_press=self.toggle_recording))
         layout.add_widget(Button(text="Load Playback", on_press=self.load_playback))
 
         config_btn = Button(text="?")
         config_btn.bind(on_press=self.open_configurator)
         layout.add_widget(config_btn)
-
-        self.bpm_label = Label(text='Tempo: 120 BPM', size_hint_x=0.3)
-        self.bpm_slider = Slider(min=1, max=300, value=120, step=1)
-        self.bpm_slider.bind(value=self.update_bpm)
-
-        layout.add_widget(self.bpm_label)
-        layout.add_widget(self.bpm_slider)
-
         return layout
 
     def open_configurator(self, _=None):
@@ -652,10 +688,10 @@ class CellularAutomataApp(App):
         self.grid_toggles.clear()
 
         for grid_data in grids_data:
-            emoji_label = grid_data.get('emoji_label', '😀')
+            emoji_label = grid_data.get('emoji_label', '∫')
             bpm = grid_data.get('bpm', 120)
 
-            new_grid = SimulationGrid(emoji_label=emoji_label)
+            new_grid = SimulationGrid(emoji_label=emoji_label, bpm=bpm)
             new_grid.app = self
             new_grid.bpm = bpm
             self.grids.append(new_grid)
@@ -723,8 +759,14 @@ class CellularAutomataApp(App):
         self.toggle_container = BoxLayout(orientation='horizontal', size_hint_x=1)
         layout.add_widget(self.toggle_container)
 
-        add_btn = Button(text="Add", size_hint_x=1)
-        remove_btn = Button(text="Remove", size_hint_x=1)
+        self.bpm_label = Label(text='Tempo: 120 BPM', size_hint_x=1, width=100)
+        self.bpm_slider = Slider(min=1, max=300, value=120, step=1, size_hint_x=1, width=150)
+        self.bpm_slider.bind(value=self.update_bpm)
+
+        layout.add_widget(self.bpm_label)
+        layout.add_widget(self.bpm_slider)
+        add_btn = Button(text="#+", size_hint_x=None, width=40)
+        remove_btn = Button(text="#-", size_hint_x=None, width=40)
 
         add_btn.bind(on_press=lambda _: self.add_grid())
         remove_btn.bind(on_press=lambda _: self.remove_current_grid())
@@ -733,6 +775,7 @@ class CellularAutomataApp(App):
 
         layout.add_widget(add_btn)
         layout.add_widget(remove_btn)
+
 
         return layout
 
@@ -789,7 +832,7 @@ class CellularAutomataApp(App):
         root.add_widget(self.content_area)
 
         # 🟩 5. Initial grid setup
-        first_emoji = chr(0x1F600)
+        first_emoji = random.choice(GRID_ICONS)
         first_grid = SimulationGrid(emoji_label=first_emoji)
         first_grid.app = self
         self.grids = [first_grid]
@@ -848,8 +891,7 @@ class CellularAutomataApp(App):
         # Determine an emoji label for the new grid
         next_idx = len(self.grids)
         # Example: use emoticon Unicode sequence starting from 0x1F600
-        emoji_codepoint = 0x1F600 + (next_idx % 80)  # cycle after 80 emojis
-        new_emoji = chr(emoji_codepoint)
+        new_emoji = random.choice(GRID_ICONS)
         # Create the new SimulationGrid
         new_grid = SimulationGrid(emoji_label=new_emoji)
         new_grid.app = self

@@ -1,7 +1,7 @@
 {
   "grids": [
     {
-      "emoji_label": "\u03a9",
+      "emoji_label": "\ud83d\ude00",
       "bpm": 120,
       "static_grid": [
         [
@@ -18,8 +18,30 @@
           0,
           0,
           0,
-          2,
-          2,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           0,
           0,
           0,
@@ -62,29 +84,7 @@
           0,
           0,
           0,
-          10,
-          10,
           0,
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          10,
           0,
           0,
           0,
@@ -96,194 +96,18 @@
           0,
           0,
           0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          10,
-          10,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
           10,
           0,
           0,
           0,
           0,
           0,
-          0
-        ],
-        [
           0,
           0,
           0,
           0,
           0,
           0,
-          0,
-          6,
-          6,
-          0,
-          0,
-          0,
-          0,
-          10,
-          10,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          6,
-          10,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          10,
-          0,
-          0,
-          0,
-          0,
-          10,
-          10,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          10,
-          0,
-          0,
-          10,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          10,
-          0,
-          0,
-          10,
-          0,
-          10,
-          10,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          6,
-          10,
-          10,
-          0,
-          10,
-          0,
-          0,
-          10,
-          0,
-          0,
-          0,
-          0,
-          0
-        ],
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          6,
-          6,
-          0,
-          0,
-          6,
-          0,
-          10,
-          10,
           0,
           0,
           0,
@@ -305,7 +129,7 @@
           0,
           0,
           0,
-          10,
+          0,
           0,
           0,
           0,
@@ -321,13 +145,13 @@
           0,
           0,
           0,
-          0,
-          0,
-          0,
-          0,
-          0,
           10,
-          10,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           0,
           0,
           0,
@@ -370,12 +194,34 @@
           0,
           0,
           0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           10,
           0,
           0,
           0,
           0,
           0,
+          0,
+          0,
+          0,
+          0,
           0
         ],
         [
@@ -383,6 +229,178 @@
           0,
           0,
           0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          10,
+          0,
+          0,
+          10,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
           0,
           0,
           0,
@@ -398,24 +416,6 @@
           0,
           0,
           0,
-          0
-        ],
-        [
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
           0,
           0,
           0,
@@ -436,8 +436,8 @@
           0,
           0,
           0,
-          2,
-          2,
+          0,
+          0,
           0,
           0,
           0,
@@ -504,8 +504,8 @@
           0,
           0,
           0,
-          3,
-          3,
+          0,
+          0,
           0,
           0,
           0,
@@ -887,26 +887,9 @@
           0
         ]
       ],
-      "directions": {
-        "2_13": [
-          1,
-          0
-        ],
-        "2_14": [
-          1,
-          0
-        ]
-      },
-      "speeds": {
-        "2_13": 1,
-        "2_14": 1
-      },
-      "counters": {
-        "1_13": 0,
-        "2_13": 0,
-        "1_14": 0,
-        "2_14": 0
-      },
+      "directions": {},
+      "speeds": {},
+      "counters": {},
       "cell_attributes": {
         "0_0": {
           "agent_type": 0,
@@ -987,13 +970,13 @@
           "velocity": 100
         },
         "0_13": {
-          "agent_type": 2,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
         "0_14": {
-          "agent_type": 2,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
@@ -1227,14 +1210,14 @@
           "velocity": 100
         },
         "2_13": {
-          "agent_type": 10,
-          "pitch": 293.66,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
         "2_14": {
-          "agent_type": 10,
-          "pitch": 261.63,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
@@ -1347,8 +1330,8 @@
           "velocity": 100
         },
         "3_13": {
-          "agent_type": 10,
-          "pitch": 261.63,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
@@ -1407,8 +1390,8 @@
           "velocity": 100
         },
         "4_3": {
-          "agent_type": 0,
-          "pitch": 440.0,
+          "agent_type": 10,
+          "pitch": 293.66,
           "duration": 0.5,
           "velocity": 100
         },
@@ -1467,14 +1450,14 @@
           "velocity": 100
         },
         "4_13": {
-          "agent_type": 10,
-          "pitch": 293.66,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
         "4_14": {
-          "agent_type": 10,
-          "pitch": 261.63,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
@@ -1587,8 +1570,8 @@
           "velocity": 100
         },
         "5_13": {
-          "agent_type": 10,
-          "pitch": 261.63,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
@@ -1671,14 +1654,14 @@
           "velocity": 100
         },
         "6_7": {
-          "agent_type": 6,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
         "6_8": {
-          "agent_type": 6,
-          "pitch": 440.0,
+          "agent_type": 10,
+          "pitch": 293.66,
           "duration": 0.5,
           "velocity": 100
         },
@@ -1707,14 +1690,14 @@
           "velocity": 100
         },
         "6_13": {
-          "agent_type": 10,
-          "pitch": 293.66,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
         "6_14": {
-          "agent_type": 10,
-          "pitch": 261.63,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
@@ -1767,7 +1750,7 @@
           "velocity": 100
         },
         "7_3": {
-          "agent_type": 3,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
@@ -1779,56 +1762,56 @@
           "velocity": 100
         },
         "7_5": {
-          "agent_type": 3,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
         "7_6": {
-          "agent_type": 3,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
         "7_7": {
-          "agent_type": 3,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
         "7_8": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "7_9": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "7_10": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "7_11": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "7_12": {
-          "agent_type": 6,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
         "7_13": {
-          "agent_type": 10,
-          "pitch": 261.63,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
@@ -1917,9 +1900,9 @@
           "velocity": 100
         },
         "8_8": {
-          "agent_type": 10,
-          "pitch": 1070.875229577486,
-          "duration": 1.5533096265769475,
+          "agent_type": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "8_9": {
@@ -1947,14 +1930,14 @@
           "velocity": 100
         },
         "8_13": {
-          "agent_type": 10,
-          "pitch": 293.66,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
         "8_14": {
-          "agent_type": 10,
-          "pitch": 261.63,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
@@ -2043,8 +2026,8 @@
           "velocity": 100
         },
         "9_9": {
-          "agent_type": 0,
-          "pitch": 440.0,
+          "agent_type": 10,
+          "pitch": 293.66,
           "duration": 0.5,
           "velocity": 100
         },
@@ -2055,9 +2038,9 @@
           "velocity": 100
         },
         "9_11": {
-          "agent_type": 10,
-          "pitch": 329.79706818536255,
-          "duration": 0.5774141393471879,
+          "agent_type": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "9_12": {
@@ -2073,8 +2056,8 @@
           "velocity": 100
         },
         "9_14": {
-          "agent_type": 10,
-          "pitch": 261.63,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
@@ -2157,9 +2140,9 @@
           "velocity": 100
         },
         "10_8": {
-          "agent_type": 10,
-          "pitch": 1070.875229577486,
-          "duration": 1.5533096265769475,
+          "agent_type": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "10_9": {
@@ -2175,9 +2158,9 @@
           "velocity": 100
         },
         "10_11": {
-          "agent_type": 10,
-          "pitch": 1070.875229577486,
-          "duration": 1.5533096265769475,
+          "agent_type": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "10_12": {
@@ -2187,14 +2170,14 @@
           "velocity": 100
         },
         "10_13": {
-          "agent_type": 10,
-          "pitch": 293.66,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
         "10_14": {
-          "agent_type": 10,
-          "pitch": 261.63,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
@@ -2271,20 +2254,20 @@
           "velocity": 100
         },
         "11_7": {
-          "agent_type": 6,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
         "11_8": {
-          "agent_type": 10,
-          "pitch": 349.23,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
         "11_9": {
-          "agent_type": 10,
-          "pitch": 392.0,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
@@ -2295,8 +2278,8 @@
           "velocity": 100
         },
         "11_11": {
-          "agent_type": 10,
-          "pitch": 329.63,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
@@ -2313,8 +2296,8 @@
           "velocity": 100
         },
         "11_14": {
-          "agent_type": 10,
-          "pitch": 261.63,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
@@ -2391,13 +2374,13 @@
           "velocity": 100
         },
         "12_7": {
-          "agent_type": 6,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
         "12_8": {
-          "agent_type": 6,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
@@ -2415,7 +2398,7 @@
           "velocity": 100
         },
         "12_11": {
-          "agent_type": 6,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
@@ -2427,14 +2410,14 @@
           "velocity": 100
         },
         "12_13": {
-          "agent_type": 10,
-          "pitch": 293.66,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
         "12_14": {
-          "agent_type": 10,
-          "pitch": 261.63,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
@@ -2553,8 +2536,8 @@
           "velocity": 100
         },
         "13_14": {
-          "agent_type": 10,
-          "pitch": 261.63,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
@@ -2667,14 +2650,14 @@
           "velocity": 100
         },
         "14_13": {
-          "agent_type": 10,
-          "pitch": 293.66,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
         "14_14": {
-          "agent_type": 10,
-          "pitch": 261.63,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
@@ -2907,13 +2890,13 @@
           "velocity": 100
         },
         "16_13": {
-          "agent_type": 10,
-          "pitch": 261.63,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
         "16_14": {
-          "agent_type": 3,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
@@ -2979,8 +2962,8 @@
           "velocity": 100
         },
         "17_5": {
-          "agent_type": 0,
-          "pitch": 440.0,
+          "agent_type": 10,
+          "pitch": 293.66,
           "duration": 0.5,
           "velocity": 100
         },
@@ -2997,8 +2980,8 @@
           "velocity": 100
         },
         "17_8": {
-          "agent_type": 0,
-          "pitch": 440.0,
+          "agent_type": 10,
+          "pitch": 293.66,
           "duration": 0.5,
           "velocity": 100
         },
@@ -3033,8 +3016,8 @@
           "velocity": 100
         },
         "17_14": {
-          "agent_type": 10,
-          "pitch": 261.63,
+          "agent_type": 0,
+          "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
@@ -3129,8 +3112,8 @@
           "velocity": 100
         },
         "18_10": {
-          "agent_type": 0,
-          "pitch": 440.0,
+          "agent_type": 10,
+          "pitch": 293.66,
           "duration": 0.5,
           "velocity": 100
         },
@@ -3148,12 +3131,12 @@
         },
         "18_13": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "18_14": {
-          "agent_type": 3,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
@@ -3267,13 +3250,13 @@
           "velocity": 100
         },
         "19_13": {
-          "agent_type": 2,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
         "19_14": {
-          "agent_type": 2,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
@@ -3311,12 +3294,20 @@
       }
     },
     {
-      "emoji_label": "\u03a9",
+      "emoji_label": "\ud83d\ude01",
       "bpm": 120,
       "static_grid": [
         [
           0,
-          4,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          10,
           0,
           0,
           0,
@@ -3326,41 +3317,11 @@
           0,
           0,
           0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          4,
           0
         ],
         [
           0,
-          4,
           0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          4,
-          0
-        ],
-        [
-          0,
-          4,
           0,
           0,
           0,
@@ -3454,7 +3415,7 @@
           0,
           0,
           0,
-          0,
+          10,
           0,
           0,
           0,
@@ -3630,6 +3591,7 @@
           0,
           0,
           0,
+          10,
           0,
           0,
           0,
@@ -3640,7 +3602,28 @@
           0,
           0,
           0,
-          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
           0,
           0
         ],
@@ -3686,7 +3669,7 @@
           0,
           0,
           0,
-          4
+          0
         ],
         [
           0,
@@ -3708,7 +3691,7 @@
           0,
           0,
           0,
-          4
+          0
         ],
         [
           0,
@@ -3730,12 +3713,11 @@
           0,
           0,
           0,
-          4
+          0
         ],
         [
           0,
           0,
-          4,
           0,
           0,
           0,
@@ -3752,7 +3734,8 @@
           0,
           0,
           0,
-          6
+          0,
+          0
         ]
       ],
       "dynamic_grid": [
@@ -3847,7 +3830,7 @@
         [
           0,
           0,
-          3,
+          0,
           0,
           0,
           0,
@@ -4197,18 +4180,9 @@
           0
         ]
       ],
-      "directions": {
-        "4_2": [
-          1,
-          0
-        ]
-      },
-      "speeds": {
-        "4_2": 4
-      },
-      "counters": {
-        "4_2": 2
-      },
+      "directions": {},
+      "speeds": {},
+      "counters": {},
       "cell_attributes": {
         "0_0": {
           "agent_type": 0,
@@ -4217,7 +4191,7 @@
           "velocity": 100
         },
         "0_1": {
-          "agent_type": 4,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
@@ -4265,8 +4239,8 @@
           "velocity": 100
         },
         "0_9": {
-          "agent_type": 0,
-          "pitch": 440.0,
+          "agent_type": 10,
+          "pitch": 261.63,
           "duration": 0.5,
           "velocity": 100
         },
@@ -4319,7 +4293,7 @@
           "velocity": 100
         },
         "0_18": {
-          "agent_type": 4,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
@@ -4337,7 +4311,7 @@
           "velocity": 100
         },
         "1_1": {
-          "agent_type": 4,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
@@ -4439,7 +4413,7 @@
           "velocity": 100
         },
         "1_18": {
-          "agent_type": 4,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
@@ -4457,7 +4431,7 @@
           "velocity": 100
         },
         "2_1": {
-          "agent_type": 4,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
@@ -4842,8 +4816,8 @@
         },
         "5_5": {
           "agent_type": 0,
-          "pitch": 440.0,
-          "duration": 0.5,
+          "pitch": 0,
+          "duration": 0,
           "velocity": 100
         },
         "5_6": {
@@ -4853,8 +4827,8 @@
           "velocity": 100
         },
         "5_7": {
-          "agent_type": 0,
-          "pitch": 440.0,
+          "agent_type": 10,
+          "pitch": 261.63,
           "duration": 0.5,
           "velocity": 100
         },
@@ -5303,7 +5277,7 @@
           "velocity": 100
         },
         "9_2": {
-          "agent_type": 3,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
@@ -5424,8 +5398,8 @@
         },
         "10_2": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "10_3": {
@@ -5544,8 +5518,8 @@
         },
         "11_2": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "11_3": {
@@ -5664,8 +5638,8 @@
         },
         "12_2": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "12_3": {
@@ -5783,7 +5757,7 @@
           "velocity": 100
         },
         "13_2": {
-          "agent_type": 3,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
@@ -5813,8 +5787,8 @@
           "velocity": 100
         },
         "13_7": {
-          "agent_type": 0,
-          "pitch": 440.0,
+          "agent_type": 10,
+          "pitch": 261.63,
           "duration": 0.5,
           "velocity": 100
         },
@@ -5904,32 +5878,32 @@
         },
         "14_2": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "14_3": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "14_4": {
-          "agent_type": 3,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
         "14_5": {
-          "agent_type": 3,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
         "14_6": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "14_7": {
@@ -5940,8 +5914,8 @@
         },
         "14_8": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "14_9": {
@@ -5952,20 +5926,20 @@
         },
         "14_10": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "14_11": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "14_12": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "14_13": {
@@ -5976,8 +5950,8 @@
         },
         "14_14": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "14_15": {
@@ -5993,7 +5967,7 @@
           "velocity": 100
         },
         "14_17": {
-          "agent_type": 1,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
@@ -6024,8 +5998,8 @@
         },
         "15_2": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "15_3": {
@@ -6048,8 +6022,8 @@
         },
         "15_6": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "15_7": {
@@ -6144,8 +6118,8 @@
         },
         "16_2": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "16_3": {
@@ -6245,7 +6219,7 @@
           "velocity": 100
         },
         "16_19": {
-          "agent_type": 4,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
@@ -6264,8 +6238,8 @@
         },
         "17_2": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "17_3": {
@@ -6365,7 +6339,7 @@
           "velocity": 100
         },
         "17_19": {
-          "agent_type": 4,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
@@ -6384,36 +6358,36 @@
         },
         "18_2": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "18_3": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "18_4": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "18_5": {
-          "agent_type": 3,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
         "18_6": {
-          "agent_type": 3,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
         },
         "18_7": {
-          "agent_type": 3,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
@@ -6444,8 +6418,8 @@
         },
         "18_12": {
           "agent_type": 0,
-          "pitch": 0,
-          "duration": 0,
+          "pitch": 440.0,
+          "duration": 0.5,
           "velocity": 100
         },
         "18_13": {
@@ -6485,7 +6459,7 @@
           "velocity": 100
         },
         "18_19": {
-          "agent_type": 4,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
@@ -6503,7 +6477,7 @@
           "velocity": 100
         },
         "19_2": {
-          "agent_type": 4,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
@@ -6527,7 +6501,7 @@
           "velocity": 100
         },
         "19_6": {
-          "agent_type": 3,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
@@ -6605,7 +6579,7 @@
           "velocity": 100
         },
         "19_19": {
-          "agent_type": 6,
+          "agent_type": 0,
           "pitch": 440.0,
           "duration": 0.5,
           "velocity": 100
