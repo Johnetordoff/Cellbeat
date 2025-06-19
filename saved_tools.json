@@ -102,5 +102,21 @@
     "velocity": 32,
     "icon_unicode": "Choose Icon",
     "icon": "Choose Icon"
+  },
+  {
+    "id": "43b48bcc-a4ff-4453-be51-75379eff45c8",
+    "pitch": 978.2404594034722,
+    "duration": 0.212356938568648,
+    "velocity": 103,
+    "icon_unicode": "\u03a9",
+    "icon": "\u03a9"
+  },
+  {
+    "id": "da842c97-890d-42bb-80c5-3e433e81da76",
+    "pitch": 561.3839936204022,
+    "duration": 0.2918743486392211,
+    "velocity": 100,
+    "icon_unicode": "\u222b",
+    "icon": "\u222b"
   }
 ]

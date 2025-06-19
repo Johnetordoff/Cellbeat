@@ -1,9 +1,12 @@
 import os
 import json
-import random
 
 import numpy as np
 from uuid import uuid4
+GREEK_ALPHABET = [
+    'α', 'β', 'γ', 'δ', 'ε', 'ζ', 'η', 'θ', 'ι', 'κ', 'λ', 'μ',
+    'ν', 'ξ', 'ο', 'π', 'ρ', 'σ', 'τ', 'υ', 'φ', 'χ', 'ψ', 'ω'
+]
 
 from kivy.uix.filechooser import FileChooserIconView
 from kivy.uix.spinner import Spinner
@@ -13,33 +16,23 @@ from kivy.clock import Clock
 from kivy.graphics import Color, Ellipse, Rectangle
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.gridlayout import GridLayout
-from kivy.uix.button import Button
 from kivy.uix.image import Image
 from kivy.uix.behaviors import ButtonBehavior
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.popup import Popup
 from kivy.uix.slider import Slider
-from kivy.uix.label import Label
 
 import audio
-from kivy.uix.textinput import TextInput
 from kivy.uix.togglebutton import ToggleButton
-from kivy.uix.widget import Widget
 
 import agents
 from recorder import Recorder
 
-SAVED_TOOLS_PATH = 'saved_tools.json'
 ALL_STATIC_AGENTS = agents.STATIC_AGENTS.union(agents.STATIC_AGENTS)
 
+SAVED_TOOLS_PATH = 'saved_tools.json'
+GRID_ICONS = ['Ω', '≈', 'ç', '≠', '‡']
 
-GRID_ICONS = [
-    'Ω',
-    '≈',
-    'ç',
-    '≠',
-    '‡'
-]
 
 class ToolButton(ButtonBehavior, BoxLayout):
     def __init__(self, tool_data, select_callback, **kwargs):
@@ -560,9 +553,7 @@ class CellularAutomataApp(App):
     def __init__(self, **kwargs):
         self.grids = []
         super().__init__(**kwargs)
-        # List of all SimulationGrid instances
         self.recorder = Recorder(self.grids)
-        # Index of the currently active grid in the list
         self.current_index = 0
 
     def save_current_grid(self, instance=None):
@@ -575,9 +566,8 @@ class CellularAutomataApp(App):
             if not name.endswith('.json'):
                 name += '.json'
             # Save only the current grid
-            grid = self.grids[self.current_index]
             with open(name, 'w') as f:
-                json.dump(grid.get_state(), f, indent=2)
+                json.dump({'grids': [g.get_state() for g in self.grids]}, f, indent=2)
             popup.dismiss()
 
         layout.add_widget(Label(text='Enter filename:'))
@@ -620,20 +610,24 @@ class CellularAutomataApp(App):
 
     def build_top_controls(self):
         layout = BoxLayout(size_hint_y=None, height=50)
-        layout.add_widget(
-            Button(text="Start", on_press=lambda _: setattr(self.grids[self.current_index], 'running', True)))
-        layout.add_widget(
-            Button(text="Stop", on_press=lambda _: setattr(self.grids[self.current_index], 'running', False)))
-        layout.add_widget(Button(text="Reset", on_press=self.grid_reset))
-
-        # NEW: Save Grid Button
-        layout.add_widget(Button(text="Save Grid", on_press=self.save_current_grid))
-
-        # Record button (audio)
-        layout.add_widget(Button(text="Record", on_press=self.toggle_recording))
-        layout.add_widget(Button(text="Load Playback", on_press=self.load_playback))
-
-        config_btn = Button(text="?")
+        play_btn = Button(
+            text="▶",
+            size_hint=(1, 1),
+            padding=(0, 0),
+            on_press=lambda _: setattr(self.grids[self.current_index], 'running', True)
+        )
+        stop_btn = Button(
+            text="■",
+            size_hint=(1, 1),
+            padding=(0, 0),
+            on_press=lambda _: setattr(self.grids[self.current_index], 'running', False)
+        )
+        layout.add_widget(play_btn)
+        layout.add_widget(stop_btn)
+        layout.add_widget(Button(text="Save #", on_press=self.save_current_grid))
+        layout.add_widget(Button(text="Load #", on_press=self.load_playback))
+        config_btn = Button(text="Edit ♫")
+        layout.add_widget(Button(text="Save audio", on_press=self.toggle_recording))
         config_btn.bind(on_press=self.open_configurator)
         layout.add_widget(config_btn)
         return layout
@@ -654,7 +648,7 @@ class CellularAutomataApp(App):
 
     def update_bpm(self, instance, value):
         bpm = int(value)
-        self.bpm_label.text = f'Tempo: {bpm} BPM'
+        self.bpm_label.text = f'{bpm} BPM'
         interval = 60.0 / 4.0 / bpm  # assuming 16th-note step
         Clock.unschedule(self.update_all_grids)
         Clock.schedule_interval(self.update_all_grids, interval)
@@ -688,7 +682,7 @@ class CellularAutomataApp(App):
         self.grid_toggles.clear()
 
         for grid_data in grids_data:
-            emoji_label = grid_data.get('emoji_label', '∫')
+            emoji_label = grid_data.get('emoji', f"{len(self.grids) + 1:02d}")
             bpm = grid_data.get('bpm', 120)
 
             new_grid = SimulationGrid(emoji_label=emoji_label, bpm=bpm)
@@ -715,7 +709,7 @@ class CellularAutomataApp(App):
 
             # Load cell attributes
             loaded_attrs = {
-                tuple(map(int, k.split('_'))): v
+                tuple(map(int, k.split(','))): v
                 for k, v in grid_data.get('cell_attributes', {}).items()
             }
 
@@ -758,15 +752,8 @@ class CellularAutomataApp(App):
 
         self.toggle_container = BoxLayout(orientation='horizontal', size_hint_x=1)
         layout.add_widget(self.toggle_container)
-
-        self.bpm_label = Label(text='Tempo: 120 BPM', size_hint_x=1, width=100)
-        self.bpm_slider = Slider(min=1, max=300, value=120, step=1, size_hint_x=1, width=150)
-        self.bpm_slider.bind(value=self.update_bpm)
-
-        layout.add_widget(self.bpm_label)
-        layout.add_widget(self.bpm_slider)
-        add_btn = Button(text="#+", size_hint_x=None, width=40)
-        remove_btn = Button(text="#-", size_hint_x=None, width=40)
+        add_btn = Button(text="+", size_hint_x=None, width=40)
+        remove_btn = Button(text="-", size_hint_x=None, width=40)
 
         add_btn.bind(on_press=lambda _: self.add_grid())
         remove_btn.bind(on_press=lambda _: self.remove_current_grid())
@@ -775,7 +762,25 @@ class CellularAutomataApp(App):
 
         layout.add_widget(add_btn)
         layout.add_widget(remove_btn)
+        print( self.grids)
+        grid = self.grids[self.current_index]
+        self.bpm_label = Label(text=f'{grid.bpm} BPM', size_hint_x=None, width=120)
+        layout.add_widget(self.bpm_label)
 
+        bpm_controls = BoxLayout(orientation='horizontal', size_hint_x=None, width=100)
+        btn_dec = Button(text='–')
+        btn_inc = Button(text='+')
+        bpm_controls.add_widget(btn_dec)
+        bpm_controls.add_widget(btn_inc)
+        layout.add_widget(bpm_controls)
+
+        def change_bpm(delta):
+            grid = self.grids[self.current_index]
+            grid.bpm = max(1, min(300, grid.bpm + delta))  # Clamp between 1 and 300
+            self.update_bpm(None, grid.bpm)
+
+        btn_dec.bind(on_press=lambda _: change_bpm(-1))
+        btn_inc.bind(on_press=lambda _: change_bpm(1))
 
         return layout
 
@@ -816,32 +821,25 @@ class CellularAutomataApp(App):
         return []
 
     def build(self):
-        # Create the outermost vertical layout
         root = BoxLayout(orientation='vertical')
 
-        # 🟦 1. Top row controls (Start, Stop, Reset, Record, Config, BPM)
-        self.top_controls = self.build_top_controls()
-        root.add_widget(self.top_controls)
 
-        # 🟦 2. Emoji grid toggle toolbar (Add/Remove/Save + ToggleButtons)
-        self.grid_toolbar = self.build_grid_toolbar()
-        root.add_widget(self.grid_toolbar)
-
-        # 🟦 4. Grid container area (displays current grid)
-        self.content_area = BoxLayout(size_hint=(1, 1), orientation='vertical')
-        root.add_widget(self.content_area)
-
-        # 🟩 5. Initial grid setup
-        first_emoji = random.choice(GRID_ICONS)
-        first_grid = SimulationGrid(emoji_label=first_emoji)
+        first_grid = SimulationGrid(emoji_label="01")
         first_grid.app = self
         self.grids = [first_grid]
         self.grid_toggles = []
         self.current_index = 0
+        self.top_controls = self.build_top_controls()
+        root.add_widget(self.top_controls)
+
+        self.grid_toolbar = self.build_grid_toolbar()
+        root.add_widget(self.grid_toolbar)
+
+        self.content_area = BoxLayout(size_hint=(1, 1), orientation='vertical')
+        root.add_widget(self.content_area)
         self.add_grid_toggle(first_grid, index=0)
         self.content_area.add_widget(first_grid)
 
-        # 🟦 6. Saved Tool selector at the bottom (South of grid)
         self.saved_tools = self.load_saved_tools()
         self.built_in_tools = self.get_builtin_tools()
         self.tool_selection = ToolSelection(
@@ -852,7 +850,6 @@ class CellularAutomataApp(App):
         bottom_bar.add_widget(self.tool_selection)
         root.add_widget(bottom_bar)
 
-        # 🟨 6. Start simulation loop
         Clock.schedule_interval(self.update_all_grids, 0.1)
 
         return root
@@ -881,77 +878,52 @@ class CellularAutomataApp(App):
         for i, toggle in enumerate(self.grid_toggles):
             toggle.state = 'down' if i == index else 'normal'
 
-        # Schedule refresh after layout pass
         Clock.schedule_once(lambda dt: grid.refresh_cells(), 0)
 
     def add_grid(self):
         """Add a new simulation grid (up to 108 total) and switch to it."""
         if len(self.grids) >= 108:
-            return  # Max limit reached; do nothing or show a warning.
-        # Determine an emoji label for the new grid
+            return
         next_idx = len(self.grids)
-        # Example: use emoticon Unicode sequence starting from 0x1F600
-        new_emoji = random.choice(GRID_ICONS)
-        # Create the new SimulationGrid
+        new_emoji = f"{len(self.grids) + 1:02d}"  # e.g. "01", "02", ...
         new_grid = SimulationGrid(emoji_label=new_emoji)
         new_grid.app = self
         self.grids.append(new_grid)
-        # Create a toggle button for the new grid
-        new_toggle = ToggleButton(text=new_emoji, group="grids",
-                                  allow_no_selection=False,
-                                  size_hint_x=None, width=40)
-        # Bind the toggle to switch to the new grid's index
+        new_toggle = ToggleButton(
+            text=new_emoji,
+            group="grids",
+            allow_no_selection=False,
+            size_hint_x=None,
+            width=50
+        )
         new_toggle.bind(on_release=lambda instance, idx=next_idx: self.switch_to_grid(idx))
         self.toggle_container.add_widget(new_toggle)
         self.grid_toggles.append(new_toggle)
-        # Enable the remove button now that we have more than one grid
-        # (Find the remove button via toolbar children or store a reference)
-        # Here we assume btn_remove is stored or accessible; for clarity, not shown storing it
-        # Example if we stored it: self.btn_remove.disabled = False
-        # [In this code snippet, one could store btn_remove as self.btn_remove above for toggling disabled state.]
-        # Immediately switch to the new grid
         self.switch_to_grid(next_idx)
-        # Set the new toggle as down (the switch_to_grid call will handle the visuals)
         new_toggle.state = 'down'
-        # If needed, update disabled state of remove button
-        # (There is definitely more than one grid now)
-        # self.btn_remove.disabled = False
 
     def remove_current_grid(self):
         """Remove the currently active grid, if more than one grid exists."""
         if len(self.grids) <= 1:
-            return  # Don't remove the last grid
+            return
         idx_to_remove = self.current_index
-        # Remove the grid widget from the content area (if it's active)
         grid_to_remove = self.grids[idx_to_remove]
         if grid_to_remove.parent:
             self.content_area.remove_widget(grid_to_remove)
-        # Unschedule its updates if needed (not needed in global loop scenario)
-        # Clock.unschedule(grid_to_remove.update)  # only if individual scheduling was used
-        # Remove from the list of grids
         self.grids.pop(idx_to_remove)
-        # Remove and destroy its toggle button
         toggle_to_remove = self.grid_toggles.pop(idx_to_remove)
         self.toggle_container.remove_widget(toggle_to_remove)
-        # Adjust current_index to point to a valid grid
         if idx_to_remove >= len(self.grids):
-            # If we removed the last grid, show the new last grid
             self.current_index = len(self.grids) - 1
         else:
-            # Otherwise, the grid that shifted into this index becomes current
             self.current_index = idx_to_remove
-        # Switch display to the new current grid
         new_index = self.current_index
         new_grid_widget = self.grids[new_index]
         new_grid_widget.size_hint = (1, 1)
         if not new_grid_widget.parent:
             self.content_area.add_widget(new_grid_widget)
-        # Update toggle states: mark the new current index as down
         for i, toggle in enumerate(self.grid_toggles):
             toggle.state = 'down' if i == new_index else 'normal'
-        # If only one grid remains now, disable the remove button
-        # if len(self.grids) == 1:
-        #     self.btn_remove.disabled = True
 
     def update_all_grids(self, dt):
         """Update all simulation grids (called on each clock tick)."""
@@ -960,4 +932,10 @@ class CellularAutomataApp(App):
 
 
 if __name__ == '__main__':
+    from kivy.core.text import LabelBase
+    from kivy.uix.button import Button
+    from kivy.uix.label import Label
+    from kivy.uix.textinput import TextInput
+
+    LabelBase.register(name="Universal", fn_regular='assets/fonts/DejaVuSansMono-Bold.ttf')
     CellularAutomataApp().run()
