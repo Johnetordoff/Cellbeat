@@ -7,14 +7,13 @@ finish sample manipulator:
   4. filter options with echo, delay, other
   5. Pan stereo audio
 
-
-Clean up 3D Tracker
-  0. Make the speed work sanely
-  1. Fix rules having to do with bumping into rotator over and over and reflectors and perp angles 
-  2. Better icons
-  3. Add human with rules to compose song, human represents a single audio channel 
-  4. Add multiple grids with stairs to connect them, grids have ability to pan stereo audio
-  5. Add little "pop-catcher" waveform windows for each bot or human  
+Clean up 3D Trackery
+  0. Make robot collisions work sanely
+  1. Fix rules having to do with bumping into rotator over and over and reflectors and perp angles
+  2. add drums
+  3. Adjust Tempo per grid
+  4. Robots should be animated and move gradually on top on the grid, not immediately changing tile color.
+  5. Add little "pop-catcher" waveform windows for each grid
 
 Misc. 
   1. Way of translating midi into this and vice versa
