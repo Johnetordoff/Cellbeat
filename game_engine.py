@@ -275,8 +275,6 @@ class Cell(ButtonBehavior, BoxLayout):
             self.image.opacity = 1.0
 
     def update_image(self, agent_type):
-        if agent_type not in self.grid.image_sources:
-            print(f"Missing image for agent type: {agent_type}")
         self.image.source = self.grid.image_sources.get(
             agent_type, self.grid.image_sources[agents.EMPTY]
         )
@@ -285,9 +283,21 @@ class Cell(ButtonBehavior, BoxLayout):
         selected_type = self.grid.selected_type
 
         if selected_type == 10:  # Bell agent
-            self.prompt_pitch_duration(selected_type)
+            bell = getattr(self.grid.app, 'current_bell', None)
+            if bell:
+                self.grid.set_agent_at(
+                    self.row, self.col, 10,
+                    pitch=bell['pitch'],
+                    duration=bell['duration'],
+                )
+                self.update_image(10)
+            else:
+                # fallback to the inline picker if no preset exists
+                self.prompt_pitch_duration(selected_type)
+            return
         elif selected_type == agents.ROBOT:
             self.prompt_robot_speed()
+            return
         else:
             if isinstance(selected_type, str):
                 tool_data = next((t for t in self.grid.app.saved_tools if t['id'] == selected_type), None)
@@ -556,6 +566,21 @@ class CellularAutomataApp(App):
         self.recorder = Recorder(self.grids)
         self.current_index = 0
 
+        # default bell params used by NoteConfigurator → “Place Bell”
+        self.current_bell = {'pitch': 440.0, 'duration': 0.5, 'velocity': 100}
+
+    def place_note(self, pitch: float, duration: float, velocity: int):
+        """Called by NoteConfigurator → 'Place Bell'.
+        Stores defaults and selects the Bell tool so the next click places it."""
+        self.current_bell = {
+            'pitch': float(pitch),
+            'duration': float(duration),
+            'velocity': int(velocity),
+        }
+        if self.grids:
+            # ensure the active grid is in Bell mode for immediate placement on next click
+            self.grids[self.current_index].selected_type = 10  # TODO: replace 10 with agents.BELL if you have one
+
     def save_current_grid(self, instance=None):
         layout = BoxLayout(orientation='vertical', spacing=10, padding=10)
         filename_input = TextInput(text='grid.json', multiline=False)
@@ -637,10 +662,6 @@ class CellularAutomataApp(App):
             on_place=self.place_note,
             on_save_tool=self.add_saved_tool
         ).open()
-
-    def place_note(self, pitch, duration, velocity):
-        print(f"Placing note: pitch={pitch}, duration={duration}, velocity={velocity}")
-        # Optional: apply to grid immediately or show message
 
     def add_saved_tool(self, tool_data):
         self.saved_tools.append(tool_data)
@@ -762,7 +783,6 @@ class CellularAutomataApp(App):
 
         layout.add_widget(add_btn)
         layout.add_widget(remove_btn)
-        print( self.grids)
         grid = self.grids[self.current_index]
         self.bpm_label = Label(text=f'{grid.bpm} BPM', size_hint_x=None, width=120)
         layout.add_widget(self.bpm_label)
