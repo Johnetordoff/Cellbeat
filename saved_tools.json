@@ -118,5 +118,13 @@
     "velocity": 100,
     "icon_unicode": "\u222b",
     "icon": "\u222b"
+  },
+  {
+    "id": "7b2bed69-03cd-4ad1-aba8-8806596529c3",
+    "pitch": 329.79706818536255,
+    "duration": 1.3870459509748403,
+    "velocity": 127,
+    "icon_unicode": "\u00e5",
+    "icon": "\u00e5"
   }
 ]
