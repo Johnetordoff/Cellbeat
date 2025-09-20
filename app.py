@@ -196,7 +196,7 @@ class CellularAutomataApp(App):
 
     def update_bpm(self, instance, value):
         bpm = int(value)
-        self.bpm_label.text = f'{bpm} BPM'
+        self.bpm_label.text = str(bpm)
         interval = 60.0 / 4.0 / bpm  # assuming 16th-note step
         Clock.unschedule(self.update_all_grids)
         Clock.schedule_interval(self.update_all_grids, interval)
@@ -319,7 +319,7 @@ class CellularAutomataApp(App):
             g.set_volume(v)
         else:
             g.volume = v
-        self.vol_label.text = f'Vol {int(getattr(g, "volume", v) * 100)}%'
+        self.vol_label.text = f'{int(getattr(g, "volume", v) * 100)}%'
 
     def build_grid_toolbar(self):
         bar = BoxLayout(size_hint_y=None, height=52, padding=(10, 6), spacing=10)
@@ -330,10 +330,8 @@ class CellularAutomataApp(App):
                  size=lambda *_: setattr(bar.bg, "size", bar.size))
 
         self.toggle_container = BoxLayout(orientation='horizontal', size_hint_x=1, spacing=6)
-        bar.add_widget(self.toggle_container)
-
-        add_btn = Button(text="＋", **FKW(color=THEME["text"]))
-        rem_btn = Button(text="–", **FKW(color=THEME["text"]))
+        add_btn = Button(text="+++", **FKW(color=THEME["text"]))
+        rem_btn = Button(text="–--", **FKW(color=THEME["text"]))
         set_btn_style(add_btn, filled=True, width=46)
         set_btn_style(rem_btn, width=46)
 
@@ -343,10 +341,12 @@ class CellularAutomataApp(App):
 
         bar.add_widget(add_btn)
         bar.add_widget(rem_btn)
+        bar.add_widget(self.toggle_container)
+
 
         grid = self.grids[self.current_index]
         cur_vol = int(getattr(grid, "volume", 1.0) * 100)
-        self.vol_label = Label(text=f'Vol {cur_vol}%', size_hint_x=None, width=110, **FKW(color=THEME["muted"]))
+        self.vol_label = Label(text=f'{cur_vol}%', size_hint_x=None, width=110, **FKW(color=THEME["muted"]))
         bar.add_widget(self.vol_label)
 
         # Volume chips
@@ -356,7 +356,7 @@ class CellularAutomataApp(App):
             btn.bind(on_press=lambda _, d=delta: self._vol_nudge(d))
             bar.add_widget(btn)
 
-        self.bpm_label = Label(text=f'{grid.bpm} BPM', size_hint_x=None, width=120,
+        self.bpm_label = Label(text=str(grid.bpm), size_hint_x=None, width=120,
                                **FKW(color=THEME["muted"]))
         bar.add_widget(self.bpm_label)
 
@@ -490,9 +490,9 @@ class CellularAutomataApp(App):
         for i, toggle in enumerate(self.grid_toggles):
             toggle.state = 'down' if i == index else 'normal'
 
-        self.bpm_label.text = f'{grid.bpm} BPM'
+        self.bpm_label.text = f'{grid.bpm}'
         if hasattr(self, "vol_label"):
-            self.vol_label.text = f'Vol {int(getattr(grid, "volume", 1.0) * 100)}%'
+            self.vol_label.text = f'{int(getattr(grid, "volume", 1.0) * 100)}%'
 
         Clock.schedule_once(lambda dt: grid.refresh_cells(), 0)
 
